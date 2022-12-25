@@ -9,7 +9,7 @@ App {
 	// By making them a URL type property they will automatically be converted to full paths,
 	// preventing problems when passing them around to code that comes from a different path.
 	property url tileUrl : "TscClockTile.qml";
-	property url thumbnailIcon: "file:///qmf/qml/apps/tscClock/drawables/tscClock.png";
+	property url thumbnailIcon: "drawables/clock.svg";
 
 	property string timeStr
 	property string dateStr
