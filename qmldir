@@ -1,0 +1,3 @@
+module apps.tscClock
+TscClockApp 1.0 TscClockApp.qml
+TscClockTile 1.0 TscCLockTile.qml
