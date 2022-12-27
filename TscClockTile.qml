@@ -3,14 +3,11 @@ import QtQuick 2.1
 import qb.components 1.0
 
 Tile {
-	id: joopTile
-//	tileSize: tilesize_2X1
-
-	/// Will be called when widget instantiated
-	function init() {}
+	id: tscClockTile
 
 	onClicked: {
-		stage.openFullscreen(app.fullScreenUrl);
+		if (app.tscClockSettings)
+			app.tscClockSettings.show();
 	}
 
 	Text {
@@ -20,10 +17,26 @@ Tile {
 		anchors {
 			baseline: parent.top
 			baselineOffset: isNxt ? 70 : 55
-			horizontalCenter: parent.horizontalCenter
+			left: parent.left
+			leftMargin: app.leftMarginTime
 		}
 		font.pixelSize: isNxt ? 65 : 50
 		font.family: qfont.regular.name
+	}
+
+	Text {
+		id: txtSeconds
+		text: app.timeSeconds
+		color: (typeof dimmableColors !== 'undefined') ? dimmableColors.clockTileColor: colors.clockTileColor
+		anchors {
+			bottom: txtTimeBig.bottom
+			bottomMargin: isNxt ? 11 : 9
+			left: txtTimeBig.right
+			leftMargin: isNxt ? 5 : 4
+		}
+		font.pixelSize: isNxt ? 30 : 24
+		font.family: qfont.regular.name
+		visible: app.showSeconds
 	}
 
 	Text {
@@ -38,5 +51,6 @@ Tile {
 		horizontalAlignment: Text.AlignHCenter
 		font.pixelSize: isNxt ? 32 : 25
 		font.family: qfont.regular.name
+		visible: app.showDate
 	}
 }
